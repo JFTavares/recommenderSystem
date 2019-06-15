@@ -9,11 +9,11 @@ from surprise.model_selection import train_test_split
 
 # Load the movielens-100k dataset  UserID::MovieID::Rating::Timestamp
 data = Dataset.load_builtin('ml-1m')
-trainset, testset = train_test_split(data, test_size=.5)
+trainset, testset = train_test_split(data, test_size=.15)
 
 # Configura o algoritmo. K = número de vizinhos. Name = Tipo de medida de similiradade. User based = filtragem por usuário ou item.
 
-print("Usando o algoritmo KNNWithMeans com 50 vizinhos")
+print("Usando o algoritmo KNNBasic com 50 vizinhos")
 print("Algoritmo de similiraridade: Pearson")
 algoritmo = KNNBasic(k=50, sim_options={'name': 'pearson', 'user_based': True, 'verbose' : True})
 
