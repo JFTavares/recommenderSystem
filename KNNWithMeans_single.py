@@ -12,7 +12,9 @@ data = Dataset.load_builtin('ml-1m')
 trainset, testset = train_test_split(data, test_size=.15)
 
 # Configura o algoritmo. K = número de vizinhos. Name = Tipo de medida de similiradade. User based = filtragem por usuário ou item.
+
 algoritmo = KNNWithMeans(k=20, sim_options={'name': 'pearson', 'user_based': True, 'verbose' : True})
+
 algoritmo.fit(trainset)
 
 # Selecionamos o usuário e o filme que será analisado
@@ -27,13 +29,20 @@ pred = algoritmo.predict(uid, iid, r_ui=4, verbose=True)
 # run the trained model against the testset
 test_pred = algoritmo.test(testset)
 
-# get RMSE
-print("Filtragem colaborativa baseada em usuário : Conjunto de teste")
+# Avalia RMSE
+print("Avaliação RMSE: ")
 accuracy.rmse(test_pred, verbose=True)
 
-# if you wanted to evaluate on the trainset
-print("Filtragem colaborativa baseada em usuário : Treinando...")
+# Avalia MAE
+print("Avaliação MAE: ")
+accuracy.mae(test_pred, verbose=True)
 
-train_pred = algoritmo.test(trainset.build_testset())
 
-accuracy.rmse(train_pred)
+
+
+# # if you wanted to evaluate on the trainset
+# print("Filtragem colaborativa baseada em usuário : Treinando...")
+
+# train_pred = algoritmo.test(trainset.build_testset())
+
+# accuracy.rmse(train_pred)
