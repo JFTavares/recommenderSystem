@@ -2,9 +2,9 @@
 from __future__ import (absolute_import, division, print_function,
                         unicode_literals)
 
-from surprise import KNNWithMeans
 from surprise import Dataset
 from surprise import accuracy
+from surprise import SlopeOne
 from surprise.model_selection import train_test_split
 
 # Load the movielens-100k dataset  UserID::MovieID::Rating::Timestamp
@@ -13,9 +13,8 @@ trainset, testset = train_test_split(data, test_size=.15)
 
 # Configura o algoritmo. K = número de vizinhos. Name = Tipo de medida de similiradade. User based = filtragem por usuário ou item.
 
-print("Usando o algoritmo KNNWithMeans com 20 vizinhos")
-print("Algoritmo de similiraridade: Pearson")
-algoritmo = KNNWithMeans(k=20, sim_options={'name': 'pearson', 'user_based': True, 'verbose' : True})
+print("Usando o algoritmo SlopeOne")
+algoritmo = SlopeOne()
 
 algoritmo.fit(trainset)
 
