@@ -18,7 +18,7 @@ from surprise.model_selection import KFold
 from surprise import NormalPredictor
 from surprise import BaselineOnly
 from surprise import KNNBasic
-from surprise import KNNWithMeans
+from surprise import KNNBasic
 from surprise import KNNBaseline
 from surprise import SVD
 from surprise import SVDpp
@@ -27,7 +27,7 @@ from surprise import SlopeOne
 from surprise import CoClustering
 
 # The algorithms to cross-validate
-classes = (SVD, SVDpp, NMF, SlopeOne, KNNBasic, KNNWithMeans, KNNBaseline,
+classes = (SVD, SVDpp, NMF, SlopeOne, KNNBasic, KNNBasic, KNNBaseline,
            CoClustering, BaselineOnly, NormalPredictor)
 
 # ugly dict to map algo names and datasets to their markdown links in the table
