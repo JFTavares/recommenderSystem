@@ -13,18 +13,18 @@ trainset, testset = train_test_split(data, test_size=.15)
 
 # Configura o algoritmo. K = número de vizinhos. Name = Tipo de medida de similiradade. User based = filtragem por usuário ou item.
 
-algoritmo = SVD(n_epochs=5)
+algoritmo = SVD(n_epochs=20)
 
 algoritmo.fit(trainset)
 
 # Selecionamos o usuário e o filme que será analisado
 # User 49. Tem entre 18 e 24 anos. É programador e mora em Huston, Texas
-uid = str(49)  
+uid = str(103)  
 # Filme visto e avaliado: Negotiator, The (1998)::Action|Thriller. Avaliação 4
-iid = str(2058)  # raw item id
+iid = str(1499)  # raw item id
 
 # get a prediction for specific users and items.
-pred = algoritmo.predict(uid, iid, r_ui=4, verbose=True)
+pred = algoritmo.predict(uid, iid, r_ui=1, verbose=True)
 
 # run the trained model against the testset
 test_pred = algoritmo.test(testset)
